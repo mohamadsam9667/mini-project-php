@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ورود و ثبت نام </title>
+  <title>sms ارسال </title>
 </head>
 
 <body>
@@ -13,33 +13,26 @@
     <div class="form-container sign-up">
       <form>
         <h1>ساخت حساب</h1>
-        <div class="social-icons">
-          <a href="#" class="icons"><i class="fa-brands fa-google-plus-g"></i></a>
-          <a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" class="icons"><i class="fa-brands fa-github"></i></a>
-          <a href="#" class="icons"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
+       
         <span>ایمیل/رمز ورود را وارد کنید</span>
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="Email">
+        <input type="text" placeholder="نام کاربری">
+        <input type="email" placeholder="ایمیل">
+        <input type="text" placeholder="شماره تلفن">
         <input type="password" placeholder="Password">
-        <button>Sign Up</button>
+        <button>ثبت نام</button>
       </form>
     </div>
     <div class="form-container sign-in">
       <form>
         <h1>ورود</h1>
-        <div class="social-icons">
-          <a href="#" class="icons"><i class="fa-brands fa-google-plus-g"></i></a>
-          <a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" class="icons"><i class="fa-brands fa-github"></i></a>
-          <a href="#" class="icons"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
+       
         <span>ایمیل/رمز ورود را وارد کنید</span>
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Password">
+        <input type="number" placeholder="مثال کد تایید :23424">
         <a href="#">فراموشی رمز عبور؟</a>
-        <button>ورود</button>
+        <div style="display:inline;">
+            <button>ارسال به تلفن</button>  
+           <a href="./otp.php">ارسال به ایمیل</a>
+        </div>
       </form>
     </div>
     <div class="toggle-container">
