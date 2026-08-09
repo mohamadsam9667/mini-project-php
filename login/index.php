@@ -14,21 +14,24 @@ require_once('config/loader.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ورود و ثبت نام </title>
 </head>
-
+<!-- sign up -->
 <body>
   <div class="container" id="container">
     <div class="form-container sign-up">
-      <form>
+      
+    <form method="POST" action="action/sign-up.php">
         <h1>ساخت حساب</h1>
-       
         <span>ایمیل/رمز ورود را وارد کنید</span>
-        <input type="text" placeholder="نام کاربری">
-        <input type="email" placeholder="ایمیل">
-        <input type="text" placeholder="شماره تلفن">
-        <input type="password" placeholder="Password">
-        <button>ثبت نام</button>
+        <input type="text" name="username" placeholder="نام کاربری">
+        <input type="email"name="email" placeholder="ایمیل">
+        <input type="text" name="mobile" placeholder="شماره تلفن">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit" name="signup">ثبت نام</button>
       </form>
     </div>
+
+
+
     <div class="form-container sign-in">
       <form>
         <h1>ورود</h1>
