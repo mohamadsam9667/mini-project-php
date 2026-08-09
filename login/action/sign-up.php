@@ -1,14 +1,14 @@
 <?php
 
 require_once('../config/loader.php');
-if(isset($_POST['sigun'])){
+if(isset($_POST['signup'])){
 try{    echo"is ok";
     $username=$_POST['username'];
     $password=$_POST['password'];
     $mobile=$_POST['mobile'];
     $email=$_POST['email'];    
 
-    $query = "INSERT INTO users SET  username=?,email=?,mobile=?,password=?";
+    $query = "INSERT INTO users (username, email, mobile, password) VALUES (?, ?, ?, ?)";
 
     $stmt = $conn->prepare($query);
 
@@ -22,7 +22,7 @@ try{    echo"is ok";
     echo "یوزر ساخته شد";
 
 }catch(PDOException $e){
-echo $e->getMessage();
+var_dump( $e->getMessage());
 }
 }
 ?>
