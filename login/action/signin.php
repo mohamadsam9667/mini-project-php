@@ -23,8 +23,9 @@ WHERE (username=?
 
     $resault = $stmt-> fetch(PDO::FETCH_ASSOC);
 
+    echo"<pre>";
     var_dump($resault);
-
+    echo "</pre>";
   }catch(PDOException $e){
     echo "ورودی های شما درست نیست !";
   }
