@@ -33,16 +33,16 @@ require_once('config/loader.php');
 
 
     <div class="form-container sign-in">
-      <form>
+      <form method="POST" action="action/signin.php">
         <h1>ورود</h1>
         <div class="social-icons">
         </div>
         <span>ایمیل/رمز ورود را وارد کنید</span>
-        <input type="text" placeholder="ایمیل / نام کاربری /موبایل">
-        <input type="password" placeholder="Password">
+        <input type="text" name="inputer" placeholder="ایمیل / نام کاربری /موبایل">
+        <input type="password" name="password" placeholder="Password">
         <a href="#">فراموشی رمز عبور؟</a>
         <div style="display: inline;">
-          <button>ورود</button>
+          <button type="submit" name="signin">ورود</button>
           <a href="./otp.php">sms ارسال  </a>   
         </div>
       </form>
