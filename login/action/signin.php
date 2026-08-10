@@ -20,16 +20,30 @@ WHERE (username=?
     $stmt->bindValue(4,$password);
 
     $stmt->execute();
+ 
+ 
+    //     $resault = $stmt-> fetch(PDO::FETCH_ASSOC);
+    //     echo"<pre>";
+    //  var_dump($resault);
+    //     echo "</pre>"; 
+    
 
-    $resault = $stmt-> fetch(PDO::FETCH_ASSOC);
-
-    echo"<pre>";
-    var_dump($resault);
-    echo "</pre>";
-  }catch(PDOException $e){
+    $numberUserFind=$stmt->rowCount();
+    
+    if($numberUserFind){
+    
+        echo "شما با موفقیت وارد وب سایت شدید!";
+    
+    }else{
+        header('Location:../index.php?notuser=ok');
+    }
+    
+    
+}catch(PDOException $e){
     echo "ورودی های شما درست نیست !";
-  }
+}
 
 }
+
 
 ?>
