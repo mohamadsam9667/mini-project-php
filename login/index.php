@@ -11,6 +11,7 @@ require_once('config/loader.php');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ورود و ثبت نام </title>
 </head>
@@ -46,7 +47,7 @@ require_once('config/loader.php');
           <a href="./otp.php">sms ارسال  </a>   
         </div>
         <?php if(isset($_GET['notuser'])) { ?>
-          ایمیل  موبایل یا یوزر نیم شما غلط است 
+      <p class="alert alert-danger">     ایمیل  موبایل یا یوزر نیم شما غلط است </p>
           <?php  }  ?>
       </form>
     </div>
