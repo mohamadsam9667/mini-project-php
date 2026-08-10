@@ -32,7 +32,7 @@ WHERE (username=?
     
     if($numberUserFind){
     
-        echo "شما با موفقیت وارد وب سایت شدید!";
+        header('Location:../index.php?logined=ok');
     
     }else{
         header('Location:../index.php?notuser=ok');

@@ -46,9 +46,15 @@ require_once('config/loader.php');
           <button type="submit" name="signin">ورود</button>
           <a href="./otp.php">sms ارسال  </a>   
         </div>
+
         <?php if(isset($_GET['notuser'])) { ?>
       <p class="alert alert-danger">     ایمیل  موبایل یا یوزر نیم شما غلط است </p>
           <?php  }  ?>
+
+          <?php if(isset($_GET['logined'])) { ?>
+      <p class="alert alert-success">     شما با موفقیت وارد شده اید . </p>
+          <?php  }  ?>
+
       </form>
     </div>
     <div class="toggle-container">
