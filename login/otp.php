@@ -1,3 +1,39 @@
+<!--
+const apiKey = "5AjUpQILp9t7D2UdaoaXXXxxxXX0c1dAo456usriKbgyYXqblciFvTm5NLM2346Ipcs";
+const apiUrl = "https://api.sms.ir/v1/send/verify";
+
+const model = {
+  Mobile: "9120000000",
+  TemplateId: 100000,
+  Parameters: [
+    { Name: "CODE", Value: "1234" }
+  ]
+};
+
+const payload = JSON.stringify(model);
+
+const headers = new Headers();
+headers.append("x-api-key", apiKey);
+headers.append("Content-Type", "application/json");
+
+const requestOptions = {
+  method: "POST",
+  headers: headers,
+  body: payload
+};
+
+fetch(apiUrl, requestOptions)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    // Handle the response data here
+  })
+  .catch(error => {
+    console.log(error);
+    // Handle any errors here
+  });-->
+
+
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -55,3 +91,7 @@
 <script src="./script.js"></script>
 
 </html>
+
+
+
+
