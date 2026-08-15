@@ -1,17 +1,38 @@
 <?php
-if(isset($_POST['sender'])){
-echo "کد ارسال شد ";
+require_once("../login/config/loader.php");
 
-$apiKey = "PSw9Ru3Qfy8UnKPTI4whTh8px7taG07inwfQ03wFxK2NusM6";
-$apiUrl = "https://api.sms.ir/v1/send/verify";
+if(isset($_POST['sender'])){
 
   $number_phone=$_POST["mobile"];
+  $number_otp=rand(1000,9999);
+  
+  $query="SELECT * FROM users WHERE mobile=?";
+  $stmt=$conn->prepare($query);
+  $stmt->bindValue(1,$number_phone);
+  $stmt->execute();
+  
+  if($stmt->rowCount()>0){
+    
+    $query1="INSERT INTO users otp=?";
+    $stmt->bindValue(1,$number_otp);
+    $stmt=$conn->prepare($query1);
+    $stmt->execute();
+    if(isset($_POST['sms'])){
+      if($_POST['sms']==$number_otp){
+         header('Location:./otp.php?logined=ok');
+      }else{
+        echo "<p class='alert alert-error'>کد وارد شده صحیح نیست .</p>";
+      }
+    }
+    $apiKey = "PSw9Ru3Qfy8UnKPTI4whTh8px7taG07inwfQ03wFxK2NusM6";
+    $apiUrl = "https://api.sms.ir/v1/send/verify";
+
 
   $model = [
     "mobile" => $number_phone,
     "templateId" => 781286,
     "parameters" => [
-      [ "name" => "CODE", "value" => "1234" ]
+      [ "name" => "CODE", "value" => $number_otp ]
       ]
       ];
 
@@ -29,10 +50,14 @@ $apiUrl = "https://api.sms.ir/v1/send/verify";
       
       if ($error) {
         echo "Error: " . $error;
-  } else {
-    echo $response;
-    }
-
+        } else {
+          echo $response;
+          }
+          }else{
+            echo "<p>یوزری با این شماره وجود ندارد <a href='./index.php'>ثبت نام کنید</a></p>";
+          }
+ 
+          
 }
 
   ?>
@@ -53,7 +78,7 @@ $apiUrl = "https://api.sms.ir/v1/send/verify";
     <div class="form-container sign-in">
       
     <form method="post">
-
+        
         <h1>ورود</h1>
         <span>ایمیل/شماره تلفن را وارد کنید</span>
         <input type="number" name="mobile" placeholder=" برای مثال :09125487654">
