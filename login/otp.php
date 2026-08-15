@@ -1,38 +1,40 @@
-<!--
-const apiKey = "5AjUpQILp9t7D2UdaoaXXXxxxXX0c1dAo456usriKbgyYXqblciFvTm5NLM2346Ipcs";
-const apiUrl = "https://api.sms.ir/v1/send/verify";
+<?php
+if(isset($_POST['sender'])){
+echo "کد ارسال شد ";
 
-const model = {
-  Mobile: "9120000000",
-  TemplateId: 100000,
-  Parameters: [
-    { Name: "CODE", Value: "1234" }
-  ]
-};
+$apiKey = "PSw9Ru3Qfy8UnKPTI4whTh8px7taG07inwfQ03wFxK2NusM6";
+$apiUrl = "https://api.sms.ir/v1/send/verify";
 
-const payload = JSON.stringify(model);
+if(isset($_POST["mobile"])){
 
-const headers = new Headers();
-headers.append("x-api-key", apiKey);
-headers.append("Content-Type", "application/json");
+  $model = [
+    "mobile" => "09052788750",
+    "templateId" => 781286,
+    "parameters" => [
+      [ "name" => "CODE", "value" => "1234" ]
+      ]
+      ];
 
-const requestOptions = {
-  method: "POST",
-  headers: headers,
-  body: payload
-};
-
-fetch(apiUrl, requestOptions)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    // Handle the response data here
-  })
-  .catch(error => {
-    console.log(error);
-    // Handle any errors here
-  });-->
-
+  $ch = curl_init($apiUrl);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($model));
+  curl_setopt($ch, CURLOPT_HTTPHEADER, [
+      'Content-Type: application/json',
+      'x-api-key: ' . $apiKey
+      ]);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      
+      $response = curl_exec($ch);
+      $error = curl_error($ch);
+      curl_close($ch);
+      
+      if ($error) {
+        echo "Error: " . $error;
+  } else {
+    echo $response;
+    }
+  }
+}
+  ?>
 
 <html lang="pt-BR">
 <head>
@@ -46,32 +48,24 @@ fetch(apiUrl, requestOptions)
 
 <body>
   <div class="container" id="container">
-    <div class="form-container sign-up">
-      <form>
-        <h1>ساخت حساب</h1>
-       
-        <span>ایمیل/رمز ورود را وارد کنید</span>
-        <input type="text" placeholder="نام کاربری">
-        <input type="email" placeholder="ایمیل">
-        <input type="text" placeholder="شماره تلفن">
-        <input type="password" placeholder="Password">
-        <button>ثبت نام</button>
-      </form>
-    </div>
+   
     <div class="form-container sign-in">
-      <form>
+      
+    <form method="post">
+
         <h1>ورود</h1>
-       
-        <span>ایمیل/رمز ورود را وارد کنید</span>
-        <input type="number" placeholder="مثال کد تایید :23424">
+        <span>ایمیل/شماره تلفن را وارد کنید</span>
+        <input type="number" name="mobile" placeholder=" برای مثال :09125487654">
+        <input type="number"name="sms" placeholder="2548">
         <a href="#">فراموشی رمز عبور؟</a>
         <div style="display:inline;">
-            <button>ارسال به تلفن</button>  
+            <button type="submit" name="sender">ارسال به تلفن</button>  
            <a href="./otp.php">ارسال به ایمیل</a>
         </div>
+      
       </form>
     </div>
-    <div class="toggle-container">
+    <!-- <div class="toggle-container">
       <div class="toggle">
         <div class="toggle-panel toggle-left">
           <h1>برگشت به عقب !</h1>
@@ -84,7 +78,7 @@ fetch(apiUrl, requestOptions)
           <button class="hidden" id="register">ساخت حساب کاربری</button>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </body>
 
