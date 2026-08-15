@@ -5,10 +5,10 @@ echo "کد ارسال شد ";
 $apiKey = "PSw9Ru3Qfy8UnKPTI4whTh8px7taG07inwfQ03wFxK2NusM6";
 $apiUrl = "https://api.sms.ir/v1/send/verify";
 
-if(isset($_POST["mobile"])){
+  $number_phone=$_POST["mobile"];
 
   $model = [
-    "mobile" => "09052788750",
+    "mobile" => $number_phone,
     "templateId" => 781286,
     "parameters" => [
       [ "name" => "CODE", "value" => "1234" ]
@@ -32,8 +32,9 @@ if(isset($_POST["mobile"])){
   } else {
     echo $response;
     }
-  }
+
 }
+
   ?>
 
 <html lang="pt-BR">
